@@ -1,0 +1,42 @@
+<ng-container *ngIf="movie$ | async as movie; else loading">
+    <h1 class="my-4">{{movie.title}}
+        <small *ngIf="movie.runtime > 0">({{movie.runtime}} min)</small>
+    </h1>
+
+    <div class="row mb-1" *ngIf="movie.genres?.length">
+        <div class="col-12">
+            <ng-container *ngFor="let genre of movie.genres">
+                <span class="badge badge-pill badge-primary">{{genre.name}}</span> &nbsp;
+            </ng-container>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-8">
+            <img class="img-fluid" src="{{imagesPrefixUrl}}{{movie.poster_path}}" alt="">
+        </div>
+
+        <div class="col-md-4">
+
+            <h3>Release Date</h3>
+            <p>{{movie.release_date | date}}</p>
+
+            <ng-container *ngIf="movie.tagline">
+                <h3>Tagline</h3>
+                <p>{{movie.tagline}}</p>
+            </ng-container>
+
+            <h3 class="my-3">Overview</h3>
+            <p>{{movie.overview}}</p>
+
+            <h3>Rating</h3>
+            <p>{{movie.vote_average}} </p>
+        </div>
+
+    </div>
+</ng-container>
+
+<ng-template #loading>
+    loading movie ...
+</ng-template>
