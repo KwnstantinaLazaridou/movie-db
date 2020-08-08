@@ -8,3 +8,9 @@ Run `npm install`.
 ## 2. Run the app
 
 Run `ng serve` and navigate to `http://localhost:4200/`.
+
+## Features included
+
+- Most popular movies
+- Most popular kids movies
+- Search movies by name
